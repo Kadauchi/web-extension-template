@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/Kadauchi/web-extension-boilerplate/issues"
   },
-  "homepage": "https://github.com/Kadauchi/web-extension-boilerplate#readme"
+  "homepage": "https://github.com/Kadauchi/web-extension-boilerplate#readme",
+  "devDependencies": {
+    "webpack": "^4.38.0",
+    "webpack-cli": "^3.3.6"
+  }
 }
