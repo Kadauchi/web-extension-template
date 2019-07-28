@@ -8,7 +8,7 @@ Build the extension into an unpacked folder (`/build`).
 
 Delete the `/build` and `/dist` directories.
 
-#### `npm run clean:build"`
+#### `npm run clean:build`
 
 Delete the `/build` directory.
 
