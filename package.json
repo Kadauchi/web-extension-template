@@ -2,22 +2,18 @@
   "name": "web-extension-boilerplate",
   "version": "1.0.0",
   "description": "A boilerplate for building cross browser web extensions.",
-  "main": "index.js",
+  "license": "ISC",
   "scripts": {
     "build": "npx webpack",
+    "dist": "npm run build && node zip.chrome.js && node zip.firefox.js",
+    "dist:chrome": "npm run build && zip.chrome.js",
+    "dist:firefox": "npm run build && zip.firefox.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Kadauchi/web-extension-boilerplate.git"
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Kadauchi/web-extension-boilerplate/issues"
-  },
-  "homepage": "https://github.com/Kadauchi/web-extension-boilerplate#readme",
   "devDependencies": {
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.5",
@@ -34,9 +30,5 @@
     "typescript": "^3.5.3",
     "webpack": "^4.38.0",
     "webpack-cli": "^3.3.6"
-  },
-  "dependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
   }
 }
