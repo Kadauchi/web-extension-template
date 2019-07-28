@@ -19,6 +19,7 @@
     "@types/react-dom": "^16.8.5",
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.13.0",
+    "command-line-args": "^5.1.1",
     "copy-webpack-plugin": "^5.0.4",
     "eslint": "^6.1.0",
     "fs-extra": "^8.1.0",
