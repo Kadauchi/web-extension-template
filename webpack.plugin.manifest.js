@@ -1,7 +1,8 @@
+const fs = require('fs-extra');
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const package = require('./webpack.package');
+const package = fs.readJsonSync('./package.json');
 
 // Copies the manifest.json file and merges properties from the package.json file.
 module.exports = new CopyWebpackPlugin([
