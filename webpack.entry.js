@@ -1,5 +1,3 @@
-const path = require('path');
-
 const readdirSyncRecursive = require('./readdirSyncRecursive');
 
 // Create an entry for every .ts and .tsx file in the src/pages folder.
