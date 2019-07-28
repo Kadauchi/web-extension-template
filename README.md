@@ -18,12 +18,12 @@ Delete the `/dist` directory.
 
 #### `npm run dist`
 
-Build the extension into a packed folder (`/dist/{browser}-{version}.zip`) for Chrome and Firefox that is ready to be uploaded.
+Build the extension into a packed folder `/dist/{browser}-{version}.zip` for Chrome and Firefox that is ready to be uploaded.
 
 #### `npm run dist:chrome`
 
-Build the extension into a packed folder (`/dist/chrome-{version}.zip`) for Chrome that is ready to be uploaded.
+Build the extension into a packed folder `/dist/chrome-{version}.zip` for Chrome that is ready to be uploaded.
 
 #### `npm run dist:firefox`
 
-Build the extension into a packed folder (`/dist/firefox-{version}.zip`) for Firefox that is ready to be uploaded.
+Build the extension into a packed folder `/dist/firefox-{version}.zip` for Firefox that is ready to be uploaded.
