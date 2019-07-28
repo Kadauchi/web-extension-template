@@ -10,7 +10,12 @@
     "persistent": true
   },
 
-  "content_scripts": [],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content_scripts/script.js"]
+    }
+  ],
 
   "icons": {
     "16": "assets/icon.png",
@@ -18,7 +23,7 @@
     "128": "assets/icon.png"
   },
 
-  "permissions": [],
+  "permissions": ["<all_urls>"],
 
   "browser_action": {
     // "default_title": "{package.name}",
