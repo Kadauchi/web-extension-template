@@ -1,2 +1,2 @@
-# web-extension-boilerplate
+# web-extension-template
  

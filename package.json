@@ -1,7 +1,7 @@
 {
-  "name": "web-extension-boilerplate",
+  "name": "web-extension-template",
   "version": "1.0.0",
-  "description": "A boilerplate for building cross browser web extensions.",
+  "description": "A template for building cross browser web extensions.",
   "license": "ISC",
   "scripts": {
     "build": "npx webpack",
