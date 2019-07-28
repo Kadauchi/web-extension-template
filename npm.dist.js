@@ -5,7 +5,7 @@ const JSZip = require('jszip');
 
 const readdirSyncRecursive = require('./readdirSyncRecursive');
 
-const filePaths = readdirSyncRecursive('./build');
+const filePaths = readdirSyncRecursive('./build').map((o) => o.path);
 const optionDefinitions = [{ name: 'targets', alias: 't', type: String, multiple: true, defaultOption: true }];
 const options = commandLineArgs(optionDefinitions);
 const package = fs.readJsonSync('./package.json');
