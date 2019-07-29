@@ -1,5 +1,6 @@
 {
   "name": "web-extension-template",
+  "productName": "Web Extension Template",
   "version": "1.0.0",
   "description": "A template for building cross browser web extensions.",
   "license": "ISC",
