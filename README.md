@@ -1,8 +1,25 @@
 # web-extension-template
 
+## Installation
+
+1. Clone the repo
+2. Run `npm i`
+
+## Development
+
+1. Run `npm run build`
+2. Load the `/build` directory into the browser.
+
+## Distribution
+
+1. Run `npm run dist` to create production ready zip files.
+2. Upload `/dist/{browser}-{version}.zip` to the extension store.
+
+## Scripts
+
 #### `npm run build`
 
-Build the extension into an unpacked folder (`/build`).
+Build the extension into the `/build` directory.
 
 #### `npm run clean`
 
