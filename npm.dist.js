@@ -5,7 +5,8 @@ const JSZip = require('jszip');
 
 const readdirSyncRecursive = require('./readdirSyncRecursive');
 
-const filePaths = readdirSyncRecursive('build').map((o) => o.path);
+const buildFilePaths = readdirSyncRecursive('build').map((o) => o.path);
+const srcFilePaths = readdirSyncRecursive('src').map((o) => o.path);
 const optionDefinitions = [{ name: 'targets', alias: 't', type: String, multiple: true, defaultOption: true }];
 const options = commandLineArgs(optionDefinitions);
 const package = fs.readJsonSync('./package.json');
@@ -20,17 +21,34 @@ options.targets.forEach((target) => {
   fs.removeSync(zipPath);
 
   if (target === 'chrome') {
-    filePaths.forEach((filePath) => {
+    buildFilePaths.forEach((filePath) => {
       const parsed = path.parse(filePath);
       const dirs = parsed.dir.split(path.sep).filter((dir) => dir !== 'build');
       zip.folder(zipName).file(path.join(...dirs, parsed.base), fs.readFileSync(filePath));
     });
   } else if (target === 'firefox') {
-    filePaths.forEach((filePath) => {
+    buildFilePaths.forEach((filePath) => {
       const parsed = path.parse(filePath);
       const dirs = parsed.dir.split(path.sep).filter((dir) => dir !== 'build');
       zip.file(path.join(...dirs, parsed.base), fs.readFileSync(filePath));
     });
+
+    const srcZip = new JSZip();
+    const srcZipName = `firefox-source-${package.version}`;
+    const srcZipPath = `dist/${srcZipName}.zip`;
+
+    fs.removeSync(srcZipPath);
+
+    srcFilePaths.forEach((filePath) => {
+      const parsed = path.parse(filePath);
+      const dirs = parsed.dir.split(path.sep).filter((dir) => dir !== 'src');
+      srcZip.file(path.join(...dirs, parsed.base), fs.readFileSync(filePath));
+    });
+
+    srcZip
+    .generateNodeStream({ type: 'nodebuffer', streamFiles: true, compression: 'DEFLATE' })
+    .pipe(fs.createWriteStream(srcZipPath))
+    .on('finish', () => console.log(`${srcZipPath} created.`));
   }
 
   zip
