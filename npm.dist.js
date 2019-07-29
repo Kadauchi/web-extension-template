@@ -5,17 +5,17 @@ const JSZip = require('jszip');
 
 const readdirSyncRecursive = require('./readdirSyncRecursive');
 
-const filePaths = readdirSyncRecursive('./build').map((o) => o.path);
+const filePaths = readdirSyncRecursive('build').map((o) => o.path);
 const optionDefinitions = [{ name: 'targets', alias: 't', type: String, multiple: true, defaultOption: true }];
 const options = commandLineArgs(optionDefinitions);
 const package = fs.readJsonSync('./package.json');
 
-fs.ensureDirSync('./dist');
+fs.ensureDirSync('dist');
 
 options.targets.forEach((target) => {
   const zip = new JSZip();
   const zipName = `${target}-${package.version}`;
-  const zipPath = `./dist/${zipName}.zip`;
+  const zipPath = `dist/${zipName}.zip`;
 
   fs.removeSync(zipPath);
 
