@@ -2,7 +2,7 @@
 
 ## Installation
 
-1. Clone the repo
+1. Clone the repo `git clone https://github.com/Kadauchi/web-extension-template`
 2. Run `npm i`
 
 ## Development
