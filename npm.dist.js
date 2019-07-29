@@ -19,21 +19,18 @@ options.targets.forEach((target) => {
 
   fs.removeSync(zipPath);
 
-  switch (target) {
-    case 'chrome':
-      filePaths.forEach((filePath) => {
-        const parsed = path.parse(filePath);
-        const dirs = parsed.dir.split(path.sep).filter((dir) => dir !== 'build');
-        zip.folder(zipName).file(path.join(...dirs, parsed.base), fs.readFileSync(filePath));
-      });
-      break;
-    case 'firefox':
-      filePaths.forEach((filePath) => {
-        const parsed = path.parse(filePath);
-        const dirs = parsed.dir.split(path.sep).filter((dir) => dir !== 'build');
-        zip.file(path.join(...dirs, parsed.base), fs.readFileSync(filePath));
-      });
-      break;
+  if (target === 'chrome') {
+    filePaths.forEach((filePath) => {
+      const parsed = path.parse(filePath);
+      const dirs = parsed.dir.split(path.sep).filter((dir) => dir !== 'build');
+      zip.folder(zipName).file(path.join(...dirs, parsed.base), fs.readFileSync(filePath));
+    });
+  } else if (target === 'firefox') {
+    filePaths.forEach((filePath) => {
+      const parsed = path.parse(filePath);
+      const dirs = parsed.dir.split(path.sep).filter((dir) => dir !== 'build');
+      zip.file(path.join(...dirs, parsed.base), fs.readFileSync(filePath));
+    });
   }
 
   zip
