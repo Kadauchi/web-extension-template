@@ -24,7 +24,7 @@ options.targets.forEach((target) => {
       filePaths.forEach((filePath) => {
         const parsed = path.parse(filePath);
         const dirs = parsed.dir.split(path.sep).filter((dir) => dir !== 'build');
-        zip.file(path.join(zipName, ...dirs, parsed.base), fs.readFileSync(filePath));
+        zip.folder(zipName).file(path.join(...dirs, parsed.base), fs.readFileSync(filePath));
       });
       break;
     case 'firefox':
@@ -37,7 +37,7 @@ options.targets.forEach((target) => {
   }
 
   zip
-    .generateNodeStream({ type: 'nodebuffer', streamFiles: true })
+    .generateNodeStream({ type: 'nodebuffer', streamFiles: true, compression: 'DEFLATE' })
     .pipe(fs.createWriteStream(zipPath))
     .on('finish', () => console.log(`${zipPath} created.`));
 });
